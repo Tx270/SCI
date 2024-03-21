@@ -6,7 +6,7 @@ void deleteRepeats(int arr[], int arr2[], int s);
 void reverse(int arr[], int arr2[], int s);
 int maks1D(int arr[], int s);
 void input(int arr[], int s);
-void generate(int arr[], int s, int max);
+void generate(int arr[], int s, int max = 10);
 bool compare(int arr[], int s, int arr2[], int s2);
 
 #endif // HPP_FUNCTIONS

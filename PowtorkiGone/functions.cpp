@@ -65,5 +65,3 @@ bool compare(int arr[], int s, int arr2[], int s2) {
 
 	return true;
 }
-
-//edytowane 
