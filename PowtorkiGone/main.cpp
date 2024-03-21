@@ -6,9 +6,10 @@ using namespace std;
 
 int main() {
 	const int size = 10;
-	int arr[size];
+	char arr[size];
 
-	generate(arr, size);
+	generateChar(arr, size);
 	
-	print(arr);
+	printChar(arr,size);
+	//cout << 
 }
