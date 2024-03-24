@@ -79,3 +79,16 @@ bool compare(int arr[], int s, int arr2[], int s2) {
 
 	return true;
 }
+
+void sort(int arr[], int s) {
+	int temp;
+	for(int j = 0; j < s; j++) {
+		for (int i = 0; i < s - 1; i++) {
+			if (arr[i] > arr[i + 1]) {
+				temp = arr[i + 1];
+				arr[i + 1] = arr[i];
+				arr[i] = temp;
+			}
+		}
+	}
+}

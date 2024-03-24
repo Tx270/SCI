@@ -9,6 +9,7 @@ int maks1D(char arr[], int s);
 void input(int arr[], int s);
 void generate(int arr[], int s, int max = 10);
 void generateChar(char arr[], int s);
+void sort(int arr[], int s);
 bool compare(int arr[], int s, int arr2[], int s2);
 
 #endif // HPP_FUNCTIONS
