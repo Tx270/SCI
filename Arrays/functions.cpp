@@ -80,16 +80,18 @@ bool compare(int arr[], int s, int arr2[], int s2) {
 	return true;
 }
 
-void sort(int arr[], int s) {
+void bubbleSort(int arr[], int s) {
 	int temp;
+	int size = s;
 	for(int j = 0; j < s; j++) {
-		for (int i = 0; i < s - 1; i++) {
+		for (int i = 0; i < size - 1; i++) {
 			if (arr[i] > arr[i + 1]) {
 				temp = arr[i + 1];
 				arr[i + 1] = arr[i];
 				arr[i] = temp;
 			}
 		}
+		size--;
 	}
 }
 
@@ -98,4 +100,32 @@ void swap(int arr[], int id1, int id2) {
 	temp = arr[id2];
 	arr[id2] = arr[id1];
 	arr[id1] = temp;
+}
+
+int linearSearch(int arr[], int s, int x) {
+	for (int i = 0; i < s; i++) {
+		if (arr[i] == x) {
+			return i;
+		}
+	}
+	return -1;
+}
+
+int binarySearch(int arr[], int s, int x) {
+	int high = s - 1;
+	int low = 0;
+
+	while (low <= high) {
+		int mid = low + (high - low) / 2;
+		if (arr[mid] == x) {
+			return mid;
+		}
+		if (arr[mid] < x) {
+			low = mid + 1;
+		}
+		if (arr[mid] > x) {
+			high = mid - 1;
+		}
+	}
+	return -1;
 }
