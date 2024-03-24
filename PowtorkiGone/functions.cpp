@@ -92,3 +92,10 @@ void sort(int arr[], int s) {
 		}
 	}
 }
+
+void swap(int arr[], int id1, int id2) {
+	int temp;
+	temp = arr[id2];
+	arr[id2] = arr[id1];
+	arr[id1] = temp;
+}

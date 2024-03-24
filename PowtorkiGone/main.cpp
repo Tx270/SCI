@@ -5,12 +5,11 @@ using namespace std;
 
 
 int main() {
-	const int size = 10;
-	int arr[size];
+	const int size = 40;
+	int arr[size] = { 0,1,2,1 };
 
-	generate(arr, size);
 	
 	print(arr, size);
-	sort(arr, size);
+	swap(arr, 1,2);
 	print(arr, size);
 }
