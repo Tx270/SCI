@@ -1,22 +1,22 @@
-#include "functions.hpp"
+#include "arrays.hpp"
 #include <iostream>
 
 
-void print(int arr[], int s) {
+void arrays::print(int arr[], int s) {
 	std::cout << arr[0];
 	for (int i = 1; i < s; i++)
 		std::cout << "," << arr[i];
 	std::cout << "\n";
 }
 
-void printChar(char arr[], int s) {
+void arrays::printChar(char arr[], int s) {
 	std::cout << arr[0];
 	for (int i = 1; i < s; i++)
 		std::cout << "," << arr[i];
 	std::cout << "\n";
 }
 
-void deleteRepeats(int arr[], int arr2[], int s) {
+void arrays::deleteRepeats(int arr[], int arr2[], int s) {
 	int j = 0;
 
 	for (int i = 0; i < s; i++) {
@@ -27,27 +27,27 @@ void deleteRepeats(int arr[], int arr2[], int s) {
 	}
 }
 
-void generate(int arr[], int s, int max) {
+void arrays::generate(int arr[], int s, int max) {
 	srand(time(0));
 	for (int i = 0; i < s; i++) {
 		arr[i] = rand() % max;
 	}
 }
 
-void generateChar(char arr[], int s) {
+void arrays::generateChar(char arr[], int s) {
 	srand(time(0));
 	for (int i = 0; i < s; i++) {
 		arr[i] = rand() % (90 - 65 + 1) + 65;
 	}
 }
 
-void reverse(int arr[], int arr2[], int s) {
+void arrays::reverse(int arr[], int arr2[], int s) {
 	for (int i = 0; i <= s; i++) {
 		arr2[i] = arr[s - i - 1];
 	}
 }
 
-int maks1D(char arr[], int s) {
+int arrays::maks1D(char arr[], int s) {
 	int max = arr[0];
 	for (int i = 0; i < s; i++) {
 		if (arr[i] > max) {
@@ -57,7 +57,7 @@ int maks1D(char arr[], int s) {
 	return max;
 }
 
-void input(int arr[], int s) {
+void arrays::input(int arr[], int s) {
 	int li = 0;
 	for (int i = 0; i < s; i++) {
 		std::cout << "Enter number " << i + 1 << " out of " << s << ": ";
@@ -66,7 +66,7 @@ void input(int arr[], int s) {
 	}
 }
 
-bool compare(int arr[], int s, int arr2[], int s2) {
+bool arrays::compare(int arr[], int s, int arr2[], int s2) {
 	if (s != s2) {
 		return false;
 	}
@@ -80,10 +80,10 @@ bool compare(int arr[], int s, int arr2[], int s2) {
 	return true;
 }
 
-void bubbleSort(int arr[], int s) {
+void arrays::bubbleSort(int arr[], int s) {
 	int temp;
 	int size = s;
-	for(int j = 0; j < s; j++) {
+	for (int j = 0; j < s; j++) {
 		for (int i = 0; i < size - 1; i++) {
 			if (arr[i] > arr[i + 1]) {
 				temp = arr[i + 1];
@@ -95,14 +95,14 @@ void bubbleSort(int arr[], int s) {
 	}
 }
 
-void swap(int arr[], int id1, int id2) {
+void arrays::swap(int arr[], int id1, int id2) {
 	int temp;
 	temp = arr[id2];
 	arr[id2] = arr[id1];
 	arr[id1] = temp;
 }
 
-int linearSearch(int arr[], int s, int x) {
+int arrays::linearSearch(int arr[], int s, int x) {
 	for (int i = 0; i < s; i++) {
 		if (arr[i] == x) {
 			return i;
@@ -111,7 +111,7 @@ int linearSearch(int arr[], int s, int x) {
 	return -1;
 }
 
-int binarySearch(int arr[], int s, int x) {
+int arrays::binarySearch(int arr[], int s, int x) {
 	int high = s - 1;
 	int low = 0;
 
