@@ -2,14 +2,14 @@
 #include <iostream>
 
 
-void arrays::print(int arr[], int s) {
+void arrays::print(const int arr[], int s) {
 	std::cout << arr[0];
 	for (int i = 1; i < s; i++)
 		std::cout << "," << arr[i];
 	std::cout << "\n";
 }
 
-void arrays::printChar(char arr[], int s) {
+void arrays::printChar(const char arr[], int s) {
 	std::cout << arr[0];
 	for (int i = 1; i < s; i++)
 		std::cout << "," << arr[i];
@@ -41,13 +41,24 @@ void arrays::generateChar(char arr[], int s) {
 	}
 }
 
-void arrays::reverse(int arr[], int arr2[], int s) {
-	for (int i = 0; i <= s; i++) {
-		arr2[i] = arr[s - i - 1];
+void arrays::reverse(int arr[], int s) {
+	int temp;
+	for (int i = 0; i < s/2; i++) {
+		temp = arr[s - 1 - i];
+		arr[s - 1 - i] = arr[i];
+		arr[i] = temp;
 	}
 }
 
-int arrays::maks1D(char arr[], int s) {
+float arrays::average(int arr[], int s) {
+	int sum = 0;
+	for (int i = 0; i < s; i++) {
+		sum += arr[i];
+	}
+	return sum / static_cast<float>(s);
+}
+
+int arrays::max(const int arr[], int s) {
 	int max = arr[0];
 	for (int i = 0; i < s; i++) {
 		if (arr[i] > max) {
@@ -55,6 +66,16 @@ int arrays::maks1D(char arr[], int s) {
 		}
 	}
 	return max;
+}
+
+int arrays::min(const int arr[], int s) {
+	int min = arr[0];
+	for (int i = 0; i < s; i++) {
+		if (arr[i] < min) {
+			min = arr[i];
+		}
+	}
+	return min;
 }
 
 void arrays::input(int arr[], int s) {
@@ -66,7 +87,7 @@ void arrays::input(int arr[], int s) {
 	}
 }
 
-bool arrays::compare(int arr[], int s, int arr2[], int s2) {
+bool arrays::compare(const int arr[], int s, const int arr2[], int s2) {
 	if (s != s2) {
 		return false;
 	}
@@ -102,7 +123,7 @@ void arrays::swap(int arr[], int id1, int id2) {
 	arr[id1] = temp;
 }
 
-int arrays::linearSearch(int arr[], int s, int x) {
+int arrays::linearSearch(const int arr[], int s, int x) {
 	for (int i = 0; i < s; i++) {
 		if (arr[i] == x) {
 			return i;
@@ -111,7 +132,7 @@ int arrays::linearSearch(int arr[], int s, int x) {
 	return -1;
 }
 
-int arrays::binarySearch(int arr[], int s, int x) {
+int arrays::binarySearch(const int arr[], int s, int x) {
 	int high = s - 1;
 	int low = 0;
 

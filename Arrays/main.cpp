@@ -5,11 +5,12 @@ using namespace std;
 
 
 int main() {
-	arrays array;
-	const int size = 90;
+	arrays arrays;
+	const int size = 10;
 	int arr[size];
 
-	array.generate(arr, size);
-	
-	array.print(arr, size);
+	arrays.generate(arr, size);
+	arrays.print(arr, size);
+	cout << arrays.max(arr, size);
+	//arrays.print(arr, size);
 }
