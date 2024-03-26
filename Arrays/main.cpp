@@ -11,6 +11,6 @@ int main() {
 
 	arrays.generate(arr, size);
 	arrays.print(arr, size);
-	cout << arrays.max(arr, size);
+	cout << arrays.median(arr, size);
 	//arrays.print(arr, size);
 }

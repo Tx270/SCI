@@ -28,14 +28,14 @@ void arrays::deleteRepeats(int arr[], int arr2[], int s) {
 }
 
 void arrays::generate(int arr[], int s, int max) {
-	srand(time(0));
+	srand((unsigned)time(0));
 	for (int i = 0; i < s; i++) {
 		arr[i] = rand() % max;
 	}
 }
 
 void arrays::generateChar(char arr[], int s) {
-	srand(time(0));
+	srand((unsigned)time(0));
 	for (int i = 0; i < s; i++) {
 		arr[i] = rand() % (90 - 65 + 1) + 65;
 	}
@@ -76,6 +76,10 @@ int arrays::min(const int arr[], int s) {
 		}
 	}
 	return min;
+}
+
+int arrays::median(const int arr[], int s) {
+	return arr[s/2];
 }
 
 void arrays::input(int arr[], int s) {

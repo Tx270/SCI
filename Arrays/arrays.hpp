@@ -12,6 +12,7 @@ class arrays
 	float average(int arr[], int s);
 	int max(const int arr[], int s);
 	int min(const int arr[], int s);
+	int median(const int arr[], int s);
 	void input(int arr[], int s);
 	void generate(int arr[], int s, int max = 10);
 	void generateChar(char arr[], int s);
