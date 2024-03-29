@@ -3,7 +3,7 @@
 #include <cmath>
 
 
-//ee
+
 void arrays::print(const int arr[], int s) {
 	std::cout << arr[0];
 	for (int i = 1; i < s; i++)
@@ -162,7 +162,7 @@ int arrays::min(const int arr[], int s) {
 		}
 	}
 	return min;
-}//d
+}
 
 
 bool arrays::compare(const int arr[], int s, const int arr2[], int s2) {
