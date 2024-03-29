@@ -162,7 +162,7 @@ int arrays::min(const int arr[], int s) {
 		}
 	}
 	return min;
-}
+}//d
 
 
 bool arrays::compare(const int arr[], int s, const int arr2[], int s2) {
