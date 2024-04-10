@@ -21,7 +21,7 @@ class arrays
 		T* input(int& s) {
 			std::cout << "Enter array size: ";
 			std::cin >> s;
-			T* arr = new int[s];
+			T* arr = new T[s];
 			for (int i = 0; i < s; i++) {
 				std::cout << "Enter value " << i + 1 << " out of " << s << ": ";
 				std::cin >> arr[i];
@@ -35,15 +35,16 @@ class arrays
 			T* arr_p = new T[s];
 			srand((unsigned)time(0));
 			for (int i = 0; i < s; i++) {
-				arr_p[i] = static_cast<T>(randomFloat(min, max));
+				arr_p[i] = static_cast<T>(min + static_cast <float> (rand()) / (static_cast <float> (RAND_MAX / (max - min))));
 			}
 			return arr_p;
 		}
 
 
-		int* deleteRepeats(const int arr[], int& s) {
+		template<typename T>
+		T* deleteRepeats(const T arr[], int& s) {
 			int j = 0;
-			int* arr_p = new int[s] {0};
+			T* arr_p = new T[s] {0};
 			for (int i = 0; i < s; i++) {
 				if (arr[i] != arr[i + 1]) {
 					arr_p[j] = arr[i];
@@ -51,7 +52,7 @@ class arrays
 				}
 			}
 			s = j;
-			int* result = new int[s];
+			T* result = new T[s];
 			for (int i = 0; i < s; i++) {
 				result[i] = arr_p[i];
 			}
@@ -60,23 +61,22 @@ class arrays
 		}
 
 
-		void swap(int arr[], int id1, int id2) {
-			int temp;
+		template<typename T>
+		void swap(T arr[], int id1, int id2) {
+			T temp;
 			temp = arr[id2];
 			arr[id2] = arr[id1];
 			arr[id1] = temp;
 		}
 
 
-		void bubbleSort(int arr[], int s) {
-			int temp;
+		template<typename T>
+		void bubbleSort(T arr[], int s) {
 			int size = s;
 			for (int j = 0; j < size; j++) {
 				for (int i = 0; i < s - 1; i++) {
 					if (arr[i] > arr[i + 1]) {
-						temp = arr[i + 1];
-						arr[i + 1] = arr[i];
-						arr[i] = temp;
+						swap(arr, i, i + 1);
 					}
 				}
 				s--;
@@ -84,9 +84,9 @@ class arrays
 		}
 
 
-		int* join(int arr1[], int s1, int arr2[], int s2) {
-			int* arr_p = new int[s1 + s2];
-
+		template<typename T>
+		T* join(T arr1[], int s1, T arr2[], int s2) {
+			T* arr_p = new T[s1 + s2];
 			for (int i = 0; i < s1 + s2; i++)
 			{
 				if (i < s1)
@@ -98,27 +98,27 @@ class arrays
 		}
 
 
-		void reverse(int arr[], int s) {
-			int temp;
+		template<typename T>
+		void reverse(T arr[], int s) {
 			for (int i = 0; i < s / 2; i++) {
-				temp = arr[s - 1 - i];
-				arr[s - 1 - i] = arr[i];
-				arr[i] = temp;
+				swap(arr, i, s - 1 - i);
 			}
 		}
 
 
-		void shuffle(int arr[], int s) {
+		template<typename T>
+		void shuffle(T arr[], int s, int iterations = 50) {
 			srand((unsigned)time(0));
 
-			for (int i = 0; i < s; i++) {
+			for (int i = 0; i < iterations; i++) {
 				swap(arr, rand() % s, rand() % s);
 			}
 		}
 
 
-		float mean(const int arr[], int s) {
-			float sum = 0.0f;
+		template<typename T>
+		double mean(const T arr[], int s) {
+			double sum = 0.0f;
 			for (int i = 0; i < s; i++) {
 				sum += arr[i];
 			}
@@ -126,21 +126,23 @@ class arrays
 		}
 
 
-		float median(const int sorted_arr[], int s) {
+		template<typename T>
+		double median(const T arr[], int s) {
 			if (s % 2 == 0)
-				return static_cast<float>(sorted_arr[s / 2 - 1] + sorted_arr[s / 2]) / 2.0f;
+				return static_cast<double>(arr[s / 2 - 1] + arr[s / 2]) / 2.0f;
 			else
-				return sorted_arr[s / 2];
+				return arr[s / 2];
 		}
 
 
-		float standardDeviation(const int arr[], int s) {
-			float avr = mean(arr, s);
-			int* arr_p = new int[s];
+		template<typename T>
+		double standardDeviation(const T arr[], int s) {
+			double avr = mean(arr, s);
+			T* arr_p = new T[s];
 			for (int i = 0; i < s; i++) {
 				arr_p[i] = abs(arr[i] - avr);
 			}
-			float sum = 0;
+			double sum = 0;
 			for (int i = 0; i < s; i++) {
 				sum += pow(arr_p[i], 2);
 			}
@@ -150,8 +152,9 @@ class arrays
 		}
 
 
-		int max(const int arr[], int s) {
-			int max = arr[0];
+		template<typename T>
+		T max(const T arr[], int s) {
+			T max = arr[0];
 			for (int i = 0; i < s; i++) {
 				if (arr[i] > max) {
 					max = arr[i];
@@ -161,8 +164,9 @@ class arrays
 		}
 
 
-		int min(const int arr[], int s) {
-			int min = arr[0];
+		template<typename T>
+		T min(const T arr[], int s) {
+			T min = arr[0];
 			for (int i = 0; i < s; i++) {
 				if (arr[i] < min) {
 					min = arr[i];
@@ -172,29 +176,30 @@ class arrays
 		}
 
 
-		bool compare(const int arr[], int s, const int arr2[], int s2) {
+		template<typename T>
+		bool compare(const T arr[], int s, const T arr2[], int s2) {
 			if (s != s2) {
 				return false;
 			}
-
 			for (int i = 0; i < s; i++) {
 				if (arr[i] != arr2[i]) {
 					return false;
 				}
 			}
-
 			return true;
 		}
 
 
-		void ptr2arr(int* arr_p, int arr[], int s) {
+		template<typename T>
+		void ptr2arr(T* arr_p, T arr[], int s) {
 			for (int i = 0; i < s; i++) {
 				arr[i] = arr_p[i];
 			}
 		}
 
 
-		int linearSearch(const int arr[], int s, int x) {
+		template<typename T>
+		int linearSearch(const T arr[], int s, T x) {
 			for (int i = 0; i < s; i++) {
 				if (arr[i] == x) {
 					return i;
@@ -204,7 +209,8 @@ class arrays
 		}
 
 
-		int binarySearch(const int arr[], int s, int x) {
+		template<typename T>
+		int binarySearch(const T arr[], int s, T x) {
 			int high = s - 1;
 			int low = 0;
 
@@ -222,31 +228,6 @@ class arrays
 			}
 			return -1;
 		}
-
-		private:
-			float randomFloat()
-			{
-				return (float)(rand()) / (float)(RAND_MAX);
-			}
-
-			int randomInt(int a, int b)
-			{
-				if (a > b)
-					return randomInt(b, a);
-				if (a == b)
-					return a;
-				return a + (rand() % (b - a));
-			}
-
-			float randomFloat(int a, int b)
-			{
-				if (a > b)
-					return randomFloat(b, a);
-				if (a == b)
-					return a;
-
-				return (float)randomInt(a, b) + randomFloat();
-			}
 };
 
 #endif //ARRAY
