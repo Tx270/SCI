@@ -1,0 +1,13 @@
+sudo apt update
+sudo apt install git
+git --version
+git config --global core.editor "subl -n -w"
+git config --global user.name "..."
+git config --global user.email "..."
+
+git clone ... or git init
+git pull origin main
+//make changes
+git add .
+git commit -m "description of the changes"
+git push origin main
