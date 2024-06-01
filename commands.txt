@@ -5,9 +5,9 @@ git config --global core.editor "subl -n -w"
 git config --global user.name "..."
 git config --global user.email "..."
 
-git clone ... or git init
-git pull origin main
+git clone ... || git init || git pull origin master
 //make changes
 git add .
 git commit -m "description of the changes"
+git status
 git push origin main
